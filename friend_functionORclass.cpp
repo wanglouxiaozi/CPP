@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class Box
+{
+	double width;
+	public:
+		friend void printWidth(Box box);
+		void setWidth(double wid);
+};
+
+//成员函数定义
+void Box::setWidth(double wid)
+{
+	width = wid;
+}
+
+//注意:printWidth()不是任何类的成员函数
+void printWidth(Box box)
+{
+	//因为printWidth()是Box的友元，它可以直接访问该类的任何成员
+	cout << "Width of box: " << box.width << endl;
+}
+
+int main()
+{
+	Box box;
+	box.setWidth(10);
+	printWidth(box);
+	return 0;
+}
